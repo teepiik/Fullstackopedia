@@ -1,0 +1,18 @@
+{
+    "categories": ["Networking", "Programming", "UI/UX design", "Cyber security"],
+    "question1" : {
+        "question": "What is DNS?",
+        "answer": "",
+        "category": "Networking"
+    },
+    "question2" : {
+        "question": "What is XSS?",
+        "answer": "",
+        "category": "Cyber security"
+    },
+    "question3" : {
+        "question": "Explain linked list in programming.",
+        "answer": "",
+        "category": "Programming"
+    }
+}

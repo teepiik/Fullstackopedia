@@ -16,8 +16,6 @@ const questionSchema = new mongoose.Schema({
     }
 })
 
-// ADD METATAGS propably for schema
-
 questionSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
