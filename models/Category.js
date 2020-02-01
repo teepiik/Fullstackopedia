@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+const uniqueValidator = require('mongoose-unique-validator')
 
 const categorySchema = new mongoose.Schema({
     categoryName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     questions: [
         {
@@ -12,6 +14,8 @@ const categorySchema = new mongoose.Schema({
         }
     ]
 })
+
+categorySchema.plugin(uniqueValidator)
 
 categorySchema.set('toJSON', {
     transform: (document, returnedObject) => {

@@ -23,19 +23,18 @@ questionRouter.get('/:id', async (req, res, next) => {
 questionRouter.post('/', async (req, res, next) => {
     const body = req.body
     try {
-        console.log(body)
         const category = await Category.findOne({ categoryName: body.category })
 
         const questionObject = new Question({
             question: body.question,
             answer: body.answer,
-            category: category
+            category: category.categoryName
         })
 
         const savedQuestion = await questionObject.save()
-        category.question =category.questions.concat(savedQuestion._id)
+        category.questions = category.questions.concat(savedQuestion._id)
         await category.save()
-        res.json(savedQuestion.toJSON())
+        res.status(201).json(savedQuestion.toJSON())
 
     } catch(error) {
         next(error)
