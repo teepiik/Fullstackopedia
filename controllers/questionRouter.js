@@ -1,5 +1,6 @@
 const questionRouter = require('express').Router()
 const Question = require('../models/Question')
+const Category = require('../models/Category')
 
 questionRouter.get('/', async (req, res) => {
     const questions = await Question.find({})
@@ -14,8 +15,30 @@ questionRouter.get('/:id', async (req, res, next) => {
         } else {
             res.status(404).end()
         }
-    } catch (e) {
-        next(e)
+    } catch (error) {
+        next(error)
+    }
+})
+
+questionRouter.post('/', async (req, res, next) => {
+    const body = req.body
+    try {
+        console.log(body)
+        const category = await Category.findOne({ categoryName: body.category })
+
+        const questionObject = new Question({
+            question: body.question,
+            answer: body.answer,
+            category: category
+        })
+
+        const savedQuestion = await questionObject.save()
+        category.question =category.questions.concat(savedQuestion._id)
+        await category.save()
+        res.json(savedQuestion.toJSON())
+
+    } catch(error) {
+        next(error)
     }
 })
 
