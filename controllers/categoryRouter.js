@@ -10,6 +10,7 @@ categoryRouter.get('/:id', async (req, res, next) => {
     try {
         const category = await Category.findById(req.params.id)
         res.status(200).json(category.toJSON())
+
     } catch (error) {
         next(error)
     }
@@ -47,6 +48,7 @@ categoryRouter.delete('/:id', async (req, res, next) => {
     try {
         await Category.findByIdAndDelete(req.params.id)
         res.status(204).end()
+
     } catch (error) {
         next(error)
     }
