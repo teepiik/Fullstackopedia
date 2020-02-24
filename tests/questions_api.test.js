@@ -21,7 +21,6 @@ const questions = [
 const categories = [
     { categoryName: 'Programming' },
     { categoryName: 'Networking' },
-
 ]
 
 beforeAll(async () => {

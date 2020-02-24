@@ -1,6 +1,7 @@
 const questionRouter = require('express').Router()
 const Question = require('../models/Question')
 const Category = require('../models/Category')
+const jwt = require('jsonwebtoken')
 
 questionRouter.get('/', async (req, res) => {
     const questions = await Question.find({})
@@ -23,6 +24,12 @@ questionRouter.get('/:id', async (req, res, next) => {
 questionRouter.post('/', async (req, res, next) => {
     const body = req.body
     try {
+        const decodedToken = jwt.verify(req.token, process.env.SECRET)
+        if(!req.token || !decodedToken.id) {
+            return res.status(401).json({ error: 'Token missing or invalid.' })
+        }
+
+        // MUST BE OBJECT ID, not category name??
         const category = await Category.findOne({ categoryName: body.category })
 
         const questionObject = new Question({
@@ -44,6 +51,10 @@ questionRouter.post('/', async (req, res, next) => {
 questionRouter.put('/:id', async (req, res, next) => {
     const body = req.body
     try {
+        const decodedToken = jwt.verify(req.token, process.env.SECRET)
+        if(!req.token || !decodedToken.id) {
+            return res.status(401).json({ error: 'Token missing or invalid.' })
+        }
         // USE THIS LATER FOR RELATION CHANGES
         const category = await Category.findOne({ categoryName: body.category })
 
@@ -67,6 +78,10 @@ questionRouter.put('/:id', async (req, res, next) => {
 
 questionRouter.delete('/', async (req, res, next) => {
     try {
+        const decodedToken = jwt.verify(req.token, process.env.SECRET)
+        if(!req.token || !decodedToken.id) {
+            return res.status(401).json({ error: 'Token missing or invalid.' })
+        }
         await Question.findByIdAndRemove(req.params.id)
         res.status(204).end()
 
