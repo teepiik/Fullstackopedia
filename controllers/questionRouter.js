@@ -29,13 +29,12 @@ questionRouter.post('/', async (req, res, next) => {
             return res.status(401).json({ error: 'Token missing or invalid.' })
         }
 
-        // MUST BE OBJECT ID, not category name??
-        const category = await Category.findOne({ categoryName: body.category })
+        const category = await Category.findById(body.category_id)
 
         const questionObject = new Question({
             question: body.question,
             answer: body.answer,
-            category: category.categoryName
+            category: body.category_id
         })
 
         const savedQuestion = await questionObject.save()
