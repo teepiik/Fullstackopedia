@@ -6,7 +6,11 @@ const userSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    passwordHash: String
+    passwordHash: String,
+    gameLevel: {
+        type: Number,
+        default: 0
+    }
 })
 
 userSchema.plugin(uniqueValidator)
