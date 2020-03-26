@@ -31,7 +31,8 @@ gameQuestionRouter.put('/:id', async (req, res, next) => {
         const objForUpdate = {
             question: body.question,
             choices: body.choices,
-            correctAnswer: body.correctAnswer
+            correctAnswer: body.correctAnswer,
+            level: body.level
         }
 
         const updatedGameQuestion = await GameQuestion.findByIdAndUpdate(req.params.id, objForUpdate, { new:true })
@@ -52,7 +53,8 @@ gameQuestionRouter.post('/', async (req, res, next) => {
         const newGameQuestion = new GameQuestion({
             question: body.question,
             choices: body.choices,
-            correctAnswer: body.correctAnswer
+            correctAnswer: body.correctAnswer,
+            level: body.level
         })
 
         const savedGameQuestion = await newGameQuestion.save()

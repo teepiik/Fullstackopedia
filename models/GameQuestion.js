@@ -5,7 +5,7 @@ const GameQuestionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Choices should have on of each, A, B, C or D
+    // Choices should have one of each, A, B, C or D
     choises: {
         charOfChoice: {
             type: String,
@@ -22,6 +22,11 @@ const GameQuestionSchema = new mongoose.Schema({
         type: String,
         required: true,
         // validate: add regex a-d
+    },
+    level: {
+        type: Number,
+        required: true,
+        // validate: add regex 1-10
     }
 })
 
