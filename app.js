@@ -9,6 +9,8 @@ const questionRouter = require('./controllers/questionRouter')
 const categoryRouter = require('./controllers/categoryRouter')
 const userRouter = require('./controllers/userRouter')
 const loginRouter = require('./controllers/login')
+const gameQuestionRouter = require('./controllers/gameQuestionRouter')
+const gameRouter = require('./controllers/gameRouter')
 
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true })
     .then(console.log('Database connection to MONGODB.'))
@@ -25,5 +27,7 @@ app.use('/api/questions', questionRouter)
 app.use('/api/categories', categoryRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/gamequestions', gameQuestionRouter)
+app.use('/api/game', gameRouter)
 
 module.exports = app
