@@ -30,7 +30,10 @@ gameQuestionRouter.put('/:id', async (req, res, next) => {
 
         const objForUpdate = {
             question: body.question,
-            choices: body.choices,
+            choiceA: body.choiceA,
+            choiceB: body.choiceB,
+            choiceC: body.choiceC,
+            choiceD: body.choiceD,
             correctAnswer: body.correctAnswer,
             level: body.level
         }
@@ -52,7 +55,10 @@ gameQuestionRouter.post('/', async (req, res, next) => {
 
         const newGameQuestion = new GameQuestion({
             question: body.question,
-            choices: body.choices,
+            choiceA: body.choiceA,
+            choiceB: body.choiceB,
+            choiceC: body.choiceC,
+            choiceD: body.choiceD,
             correctAnswer: body.correctAnswer,
             level: body.level
         })

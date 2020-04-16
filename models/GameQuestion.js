@@ -5,18 +5,25 @@ const GameQuestionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Choices should have one of each, A, B, C or D
-    choises: {
-        charOfChoice: {
-            type: String,
-            required: true,
-            // validate: add regex a-d
-        },
-        textOfChoice: {
-            type: String,
-            require: true,
-            maxlength: 30
-        }
+    choiceA: {
+        type: String,
+        require: true,
+        maxlength: 20
+    },
+    choiceB: {
+        type: String,
+        require: true,
+        maxlength: 20
+    },
+    choiceC: {
+        type: String,
+        require: true,
+        maxlength: 20
+    },
+    choiceD: {
+        type: String,
+        require: true,
+        maxlength: 20
     },
     correctAnswer: {
         type: String,
@@ -26,7 +33,7 @@ const GameQuestionSchema = new mongoose.Schema({
     level: {
         type: Number,
         required: true,
-        // validate: add regex 1-10
+        // validate: add regex 1-8
     }
 })
 

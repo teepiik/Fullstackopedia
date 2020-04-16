@@ -28,6 +28,7 @@ gameRouter.post('/answer', async (req, res, next) => {
 
         const isCorrect = gameService.handleAnswerCheck(body.userId, body.questionId, body.answer)
         const outcome = { wasCorrect: isCorrect }
+        // if anwer correct and lvl now 8 --> win
         res.status(200).json(outcome.toJSON())
     } catch (error) {
         next(error)

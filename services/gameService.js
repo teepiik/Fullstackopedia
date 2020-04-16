@@ -21,6 +21,7 @@ const handleAnswerCheck = async (userId, questionId, answer) => {
     // check answer
     if(question.correctAnswer === answer) {
         user.level = user.level + 1
+        // if level now 8 --> win
         await User.findByIdAndUpdate(user.id, user, { new:true })
         return true
     }
