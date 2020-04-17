@@ -3,27 +3,28 @@ const mongoose = require('mongoose')
 const GameQuestionSchema = new mongoose.Schema({
     question: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 80
     },
     choiceA: {
         type: String,
         require: true,
-        maxlength: 20
+        maxlength: 30
     },
     choiceB: {
         type: String,
         require: true,
-        maxlength: 20
+        maxlength: 30
     },
     choiceC: {
         type: String,
         require: true,
-        maxlength: 20
+        maxlength: 30
     },
     choiceD: {
         type: String,
         require: true,
-        maxlength: 20
+        maxlength: 30
     },
     correctAnswer: {
         type: String,
