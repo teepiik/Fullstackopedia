@@ -31,4 +31,11 @@ const handleAnswerCheck = async (userId, questionId, answer) => {
     return false
 }
 
-module.exports = { handleNewQuestion, handleAnswerCheck }
+const handleNewGame = async (userId) => {
+    const user = await User.findById(userId)
+    const newUser = { user, gameLevel: 0 }
+    const updatedUser = await User.findByIdAndUpdate(user.id, newUser, { new:true })
+    return updatedUser
+}
+
+module.exports = { handleNewQuestion, handleAnswerCheck, handleNewGame }
