@@ -13,8 +13,9 @@ gameRouter.get('/getQuestion/:id', async (req, res, next) => {
             return res.status(401).json({ error: 'Token missing or invalid.' })
         }
 
-        const question = gameService.handleNewQuestion(req.params.id)
-        res.status(200).json(question.toJSON())
+        const question = await gameService.handleNewQuestion(req.params.id)
+        console.log(question)
+        res.status(200).json(question)
     } catch (error) {
         next(error)
     }
@@ -30,10 +31,10 @@ gameRouter.post('/answer', async (req, res, next) => {
             return res.status(401).json({ error: 'Token missing or invalid.' })
         }
 
-        const isCorrect = gameService.handleAnswerCheck(body.userId, body.questionId, body.answer)
+        const isCorrect = await gameService.handleAnswerCheck(body.userId, body.questionId, body.answer)
         const outcome = { wasCorrect: isCorrect }
         // if anwer correct and lvl now 8 --> win
-        res.status(200).json(outcome.toJSON())
+        res.status(200).json(outcome)
     } catch (error) {
         next(error)
     }

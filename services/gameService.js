@@ -33,7 +33,7 @@ const handleAnswerCheck = async (userId, questionId, answer) => {
 
 const handleNewGame = async (userId) => {
     const user = await User.findById(userId)
-    const newUser = { user, gameLevel: 0 }
+    const newUser = { user, gameLevel: 1 }
     const updatedUser = await User.findByIdAndUpdate(user.id, newUser, { new:true })
     return updatedUser
 }

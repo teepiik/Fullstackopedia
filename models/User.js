@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
     passwordHash: String,
     gameLevel: {
         type: Number,
-        default: 0
+        default: 1 // game starts at level 1
     }
 })
 
