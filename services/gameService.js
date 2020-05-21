@@ -10,7 +10,7 @@ const handleNewQuestion = async (userId) => {
     // return right question (one random of appropriate level)
     const questions = await GameQuestion.find({})
     const rightLevelQuestions = questions.filter(q => q.level === user.gameLevel )
-    return rightLevelQuestions[0] // TODO Random number
+    return rightLevelQuestions[Math.floor(Math.random() * rightLevelQuestions.length)]
 }
 
 const handleAnswerCheck = async (userId, questionId, answer) => {
@@ -26,7 +26,7 @@ const handleAnswerCheck = async (userId, questionId, answer) => {
         return true
     }
     // wrong answer
-    user.level = 0
+    user.level = 1
     await User.findByIdAndUpdate(user.id, user, { new:true })
     return false
 }
