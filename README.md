@@ -3,13 +3,14 @@ Practise web application project. This folder has back-end code, documentation a
 [front-end source code here.](https://github.com/teepiik/Fullstackopedia_front)
 
 ## Description
-Fullstackopedia is a game project for practising full stack programmer knowledge. There is two different modules. In first module you simply get random questions and after answering them in your head you can reveal correct answer. The other, more game-like module is my version of the popular "Who wants to be a millionaire?" gameshow. Fullstackopedia's version is called "Who wants to be a full stack developer?" and questions are themed accordingly.
+Fullstackopedia my version of the popular "Who wants to be a millionaire?" gameshow. This version is called "Who wants to be a full stack developer?" and questions are themed accordingly.I also use this (and most others) project to focus learning for few particular tech/skill/other it-related themes.
+
+## Learning focus for this project
+
+This project's main learning themes are Accessibility, Game Logic implementation and UI design.
 
 ## Who wants to be a full stack developer?
 GAME COMING SOON!
-
-## Other features
-In order to practise accessibility the UI will have many accessibility improving features, such as mobile scalability, screenreader support and few visual settings for color blind people.
 
 ## Project Tech Stack
 * Back-end is programmed using Node.js, Express and Mongoose. Database is hosted on MongoDB Atlas.
